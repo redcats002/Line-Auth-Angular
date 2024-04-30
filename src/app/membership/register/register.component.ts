@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -14,8 +15,13 @@ export class RegisterComponent {
     birthDate: '',
   };
 
-  onSubmit() {
-    console.log(this.registrationData);
-    // You can process the form data here (e.g., send it to your backend)
+  onSubmit(form: NgForm) {
+    if (form.invalid) return;
+    const values = form.value;
+    console.log(values);
+    // this.registrationData = {
+    //   phoneNumber
+    // };
+    // console.log(regsiterData);
   }
 }

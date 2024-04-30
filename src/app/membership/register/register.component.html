@@ -1,15 +1,11 @@
-<form (ngSubmit)="onSubmit()">
+<form #membershipForm="ngForm" (submit)="onSubmit(membershipForm)">
   <div>
-    <label for="phoneNumber">Phone Number:</label>
-    <input
-      type="tel"
-      id="phoneNumber"
-      name="phoneNumber"
-      (ngModel)="(registrationData.phoneNumber)"
-      required
-    />
+    <mat-form-field appearance="outline">
+      <mat-label>phoneNumber</mat-label>
+      <input ngModel name="phoneNumber" matInput required type="tel" />
+    </mat-form-field>
   </div>
-  <div>
+  <!-- <div>
     <label for="firstName">First Name:</label>
     <input
       type="text"
@@ -52,6 +48,6 @@
       (ngModel)="(registrationData.birthDate)"
       required
     />
-  </div>
-  <button type="submit">Register</button>
+  </div> -->
+  <button mat-raised-button color="primary" type="submit">Register</button>
 </form>
