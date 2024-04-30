@@ -1,10 +1,35 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { RegisterComponent } from './membership/register/register.component';
+import { InfoComponent } from './membership/info/info.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: 'membership',
+    children: [
+      {
+        path: 'info',
+        component: RegisterComponent,
+      },
+      {
+        path: 'register',
+        component: InfoComponent,
+      },
+    ],
+  },
+  {
+    path: '**',
+    redirectTo: '/membership/register',
+  },
+  {
+    path: '',
+    redirectTo: '/membership/register',
+    pathMatch: 'full',
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
